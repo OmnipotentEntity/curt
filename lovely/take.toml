@@ -1,0 +1,109 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+base_attach.children.use = G.UIDEF.card_focus_button{
+  card = card, parent = base_attach, type = 'use',
+  func = 'can_use_consumeable', button = 'use_card', card_width = card_width
+}
+'''
+position = "at"
+payload = '''
+if not card.ability.consumeable.auto_use then
+  base_attach.children.use = G.UIDEF.card_focus_button{
+    card = card, parent = base_attach, type = 'use',
+    func = 'can_use_consumeable', button = 'use_card', card_width = card_width
+  }
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+if card.ability.consumeable then
+  if (card.area == G.pack_cards and G.pack_cards) then
+'''
+position = "at"
+payload = '''
+if card.ability.consumeable then
+  if (card.area == G.pack_cards and G.pack_cards) and not card.ability.consumeable.auto_use then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+if card.ability.consumeable then
+  if (card.area == G.pack_cards and G.pack_cards) and not card.ability.consumeable.auto_use then
+    return {
+      n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+        {n=G.UIT.R, config={mid = true}, nodes={
+        }},
+        {n=G.UIT.R, config={ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5*card.T.w - 0.15, minh = 0.8*card.T.h, maxw = 0.7*card.T.w - 0.15, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_use_consumeable'}, nodes={
+          {n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+        }},
+    }}
+  end
+'''
+position = "at"
+payload = '''
+if card.ability.consumeable then
+  if (card.area == G.pack_cards and G.pack_cards) then
+    if not card.ability.consumeable.auto_use then
+      return {
+        n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+          {n=G.UIT.R, config={mid = true}, nodes={
+          }},
+          {n=G.UIT.R, config={ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5*card.T.w - 0.15, minh = 0.8*card.T.h, maxw = 0.7*card.T.w - 0.15, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_use_consumeable'}, nodes={
+            {n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+          }},
+      }}
+    else
+      return {
+        n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+          {n=G.UIT.R, config={mid = true}, nodes={
+          }},
+          {n=G.UIT.R, config={ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5*card.T.w - 0.15, minh = 0.8*card.T.h, maxw = 0.7*card.T.w - 0.15, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'take_card', func = 'can_take_consumeable'}, nodes={
+            {n=G.UIT.T, config={text = localize('b_take'),colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+          }},
+      }}
+    end
+  end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+use = 
+{n=G.UIT.C, config={align = "cr"}, nodes={
+  
+  {n=G.UIT.C, config={ref_table = card, align = "cr",maxw = 1.25, padding = 0.1, r=0.08, minw = 1.25, minh = (card.area and card.area.config.type == 'joker') and 0 or 1, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_use_consumeable'}, nodes={
+    {n=G.UIT.B, config = {w=0.1,h=0.6}},
+    {n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+  }}
+}}
+'''
+position = "at"
+payload = '''
+if not card.ability.consumeable.auto_use then
+  use = 
+  {n=G.UIT.C, config={align = "cr"}, nodes={
+    
+    {n=G.UIT.C, config={ref_table = card, align = "cr",maxw = 1.25, padding = 0.1, r=0.08, minw = 1.25, minh = (card.area and card.area.config.type == 'joker') and 0 or 1, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_use_consumeable'}, nodes={
+      {n=G.UIT.B, config = {w=0.1,h=0.6}},
+      {n=G.UIT.T, config={text = localize('b_use'),colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
+    }}
+  }}
+end
+'''
+match_indent = true
