@@ -62,16 +62,13 @@ local tarot_map_inverse = {
 function curt_rev_tarot_in_pool(name)
   -- We can't have the corresponding upright tarot
   upright_tarot = tarot_map_inverse[name]
-  print(upright_tarot)
   if G.GAME.used_jokers[upright_tarot] then
-    print('rev tarot match up tarot')
     return nil
   end
 
   -- We also can't have another reversed tarot
   for k,_ in pairs(tarot_map_inverse) do
     if G.GAME.used_jokers[k] then
-      print('rev tarot collision')
       return nil
     end
   end
@@ -83,7 +80,6 @@ function curt_tarot_in_pool(name)
   -- We can't have the corresponding reversed tarot
   reversed_tarot = tarot_map_forward[name]
   if G.GAME.used_jokers[reversed_tarot] then
-    print('up tarot match rev tarot')
     return nil
   end
 
