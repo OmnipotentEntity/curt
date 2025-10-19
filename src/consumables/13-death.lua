@@ -1,5 +1,6 @@
 curt_Consumable {
   key = "rev_death",
+  atlas = "rev_tarot",
   pos = { x = 1, y = 2 },
   config = { auto_use = true, extra = { antes = 1 } },
 

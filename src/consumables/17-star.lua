@@ -1,5 +1,6 @@
 curt_Consumable {
   key = "rev_star",
+  atlas = "rev_tarot",
   pos = { x = 5, y = 2 },
   config = { auto_use = true, extra = { target = 'Random Joker' } },
   skip_collection_init = true,

@@ -1,5 +1,6 @@
 curt_Consumable {
   key = "rev_heirophant",
+  atlas = "rev_tarot",
   pos = { x = 5, y = 0 },
   config = { auto_use = true, extra = { chips = 15 } },
 

@@ -1,5 +1,6 @@
 curt_Consumable {
   key = "rev_wheel_of_fortune",
+  atlas = "rev_tarot",
   pos = { x = 4, y = 1 },
   config = { auto_use = true, extra = { prob = {1, 2} } },
 

@@ -92,7 +92,6 @@ end
 
 curt_Consumable = SMODS.Consumable:extend {
   set = "curt_rev_tarot",
-  atlas = "rev_tarot",
   config = {
     auto_use = true,
   },
