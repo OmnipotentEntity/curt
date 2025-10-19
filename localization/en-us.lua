@@ -29,7 +29,8 @@ return {
         name = "The Reversed Empress",
         text = {
           "When a {C:attention}consumable{} is sold,",
-          "create a {C:dark_edition}Negative{} copy of it.",
+          "create three {C:dark_edition}Negative{} copies of it.",
+          "{C:inactive}(Except The Reversed Empress){}",
         },
       },
       c_curt_rev_emperor = {
