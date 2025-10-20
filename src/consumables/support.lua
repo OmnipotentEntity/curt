@@ -60,11 +60,11 @@ local tarot_map_inverse = {
 }
 
 function curt_rev_tarot_in_pool(name)
-  -- We can't have the corresponding upright tarot
-  if SMODS.create_card_allow_duplicates then
+  if SMODS.showman() then
     return true
   end
 
+  -- We can't have the corresponding upright tarot
   upright_tarot = tarot_map_inverse[name]
   if G.GAME.used_jokers[upright_tarot] then
     return nil
@@ -81,7 +81,7 @@ function curt_rev_tarot_in_pool(name)
 end
 
 function curt_tarot_in_pool(name)
-  if SMODS.create_card_allow_duplicates then
+  if SMODS.showman() then
     return true
   end
 
