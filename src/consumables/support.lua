@@ -61,6 +61,10 @@ local tarot_map_inverse = {
 
 function curt_rev_tarot_in_pool(name)
   -- We can't have the corresponding upright tarot
+  if SMODS.create_card_allow_duplicates then
+    return true
+  end
+
   upright_tarot = tarot_map_inverse[name]
   if G.GAME.used_jokers[upright_tarot] then
     return nil
@@ -77,6 +81,10 @@ function curt_rev_tarot_in_pool(name)
 end
 
 function curt_tarot_in_pool(name)
+  if SMODS.create_card_allow_duplicates then
+    return true
+  end
+
   -- We can't have the corresponding reversed tarot
   reversed_tarot = tarot_map_forward[name]
   if G.GAME.used_jokers[reversed_tarot] then
@@ -106,3 +114,11 @@ curt_Consumable = SMODS.Consumable:extend {
   use = function() end
 }
 
+function curt_queue_juice_use_dissolve(card, from_rev_fool)
+  G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.6, func = function()
+    card:juice_up(0.6, 0.1)
+    card:use_consumeable(G.consumeables)
+    SMODS.calculate_context({using_consumeable = true, consumeable = card, area = card.from_area, from_rev_fool = from_rev_fool})
+    card:start_dissolve()
+    return true end }))
+end

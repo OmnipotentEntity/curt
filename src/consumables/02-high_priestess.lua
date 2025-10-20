@@ -17,10 +17,7 @@ curt_Consumable {
           _card:juice_up(0.3, 0.5)
           return true end }))
       end
-      delay(0.6)
-      card:use_consumeable(G.consumeables)
-      SMODS.calculate_context({using_consumeable = true, consumeable = card, area = card.from_area})
-      card:start_dissolve()
+      curt_queue_juice_use_dissolve(card)
     end
   end
 }
