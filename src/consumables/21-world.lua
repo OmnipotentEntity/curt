@@ -13,7 +13,7 @@ curt_Consumable {
     return { vars = { sign, delta } }
   end,
 
-  calculate = function()
+  calculate = function(self, card, context)
 
   end
 }

@@ -3,8 +3,7 @@ curt_Consumable {
   atlas = "rev_tarot",
   pos = { x = 4, y = 0 },
 
-  calculate = function()
+  calculate = function(self, card, context)
 
   end
 }
-

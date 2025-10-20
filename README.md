@@ -65,7 +65,7 @@ Upright - Empathy, compassion, motherhood
 Reversed - Neglect or suppression of the above
 
 Effect - When a consumable is sold, generate three negative copies of that
-consumable. (Except Reversed Empress)
+consumable. (The Reversed Empress Excluded)
 
 ----
 

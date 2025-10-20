@@ -5,7 +5,7 @@ curt_Consumable {
   config = { auto_use = true, extra = { spectral_rate = 0.5 } },
 
   calculate = function(self, card, context)
-    if context.using_consumeable then
+    if context.using_consumeable and not context.from_rev_fool then
       for _ = 1, 2 do
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
           play_sound('timpani')
@@ -21,6 +21,8 @@ curt_Consumable {
           return true end }))
       end
       delay(0.6)
+      card:use_consumeable(G.consumeables)
+      SMODS.calculate_context({using_consumeable = true, consumeable = card, area = card.from_area, from_rev_fool = true})
       card:start_dissolve()
     end
   end

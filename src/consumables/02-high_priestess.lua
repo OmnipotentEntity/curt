@@ -18,8 +18,9 @@ curt_Consumable {
           return true end }))
       end
       delay(0.6)
+      card:use_consumeable(G.consumeables)
+      SMODS.calculate_context({using_consumeable = true, consumeable = card, area = card.from_area})
       card:start_dissolve()
     end
   end
 }
-

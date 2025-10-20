@@ -102,5 +102,7 @@ curt_Consumable = SMODS.Consumable:extend {
   in_pool = function(self, args)
     return curt_rev_tarot_in_pool(self.key)
   end,
+
+  use = function() end
 }
 

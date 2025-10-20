@@ -8,8 +8,7 @@ curt_Consumable {
     return { vars = { card.ability.extra.money } }
   end,
 
-  calculate = function()
+  calculate = function(self, card, context)
 
   end
 }
-

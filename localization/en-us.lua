@@ -30,7 +30,7 @@ return {
         text = {
           "When a {C:attention}consumable{} is sold,",
           "create three {C:dark_edition}Negative{} copies of it.",
-          "{C:inactive}(Except The Reversed Empress){}",
+          "{C:inactive}(The Reversed Empress Excluded){}",
         },
       },
       c_curt_rev_emperor = {

@@ -27,7 +27,7 @@ curt_Consumable {
     return { vars = { card.ability.extra.target } }
   end,
 
-  calculate = function()
+  calculate = function(self, card, context)
 
   end,
 }

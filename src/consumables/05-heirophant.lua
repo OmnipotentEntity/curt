@@ -8,7 +8,7 @@ curt_Consumable {
     return { vars = { card.ability.extra.chips } }
   end,
 
-  calculate = function()
+  calculate = function(self, card, context)
 
   end
 }
