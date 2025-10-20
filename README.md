@@ -1,3 +1,5 @@
+##Curiously Unoriginal Reversed Tarot
+
 Reversed Tarot Cards are a popular suggestion. Everyone gives this a whack at
 some point, so here's my try. It is a pretty reasonable idea, and captures
 another element of the source inspiration. (Even if it against the Unwritten
@@ -52,7 +54,7 @@ guaranteed to occur.
 
 Upright - Intuition, truth in dreams
 
-Reversed - neglecting one's own needs to please others
+Reversed - Neglecting one's own needs to please others
 
 Effect - When a planet card is purchased, create two negative copies of it.
 
