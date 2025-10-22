@@ -13,10 +13,10 @@ use.
 Reversed Tarot Cards in divination typically represent the original
 interpretation being blocked somehow, and generally the person being read is
 responsible for but unaware of or unable to address it. So with this in mind, I
-suggest that Reversed Tarot cards do not have a "Use" mechanism. They should
-trigger automatically based on some sort of event, which consumes the card. They
-are otherwise normal consumables. When appearing in a Tarot pack, they can be
-taken, but only if you have room.
+I have made it so that that Reversed Tarot cards do not have a "Use" mechanism.
+Instead they trigger automatically based on some sort of event, which consumes
+the card. They are otherwise normal consumables. When appearing in a Tarot pack,
+they can be taken, but only if you have room.
 
 Reversed Tarot Cards appear at 3% (or so) the rate of Upright Tarot. Upright
 Fools copy reversed Tarots as their upright version. If a Reversed Tarot is
