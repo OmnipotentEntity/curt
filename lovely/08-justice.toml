@@ -1,0 +1,20 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Modify Game Over check, we don't Game Over if we still have cards in the play
+# area and we're going to put them back in our hand
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+if not (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+    G.hand.config.card_limit <= 0 and #G.hand.cards == 0 then 
+'''
+position = "at"
+payload = '''
+if not (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+    G.hand.config.card_limit <= 0 and #G.hand.cards == 0 and (not G.curt_back_to_hand or #G.play.cards == 0) then 
+'''
+match_indent = true
