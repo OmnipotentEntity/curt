@@ -4,7 +4,7 @@ curt_Consumable {
   pos = { x = 2, y = 2 },
 
   calculate = function(self, card, context)
-    if context.playing_card_added and (not card.ability.extra or not card.ability.extra.used) then
+    if context.playing_card_added and (not card.ability.extra or not card.ability.extra.triggered) then
       local cards_to_add = {}
       for _, v in ipairs(context.cards) do
         for i = 1, 4 do
@@ -35,7 +35,7 @@ curt_Consumable {
           _first_dissolve = true
         end
 
-        card.ability.extra = {used = true}
+        card.ability.extra = {triggered = true}
         curt_queue_juice_use_dissolve(card)
         playing_card_joker_effects(cards_to_add)
       end

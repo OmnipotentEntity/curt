@@ -127,9 +127,9 @@ return {
       c_curt_rev_devil = {
         name = "The Reversed Devil",
         text = {
-          "When at {C:money}$0{},",
-          "generate a {C:red}Rare Joker",
-          "{C:inactive}(Must have room)",
+          "When player has both {C:money}$0{},",
+          "and {C:attention}0 jokers{}, generates",
+          "two {C:dark_edition}Negative{} {C:red}Rare Jokers",
         },
       },
       c_curt_rev_tower = {

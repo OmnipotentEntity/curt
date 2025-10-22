@@ -24,6 +24,8 @@ triggered it is consumed, even if it does nothing. Reversed Tarot Cards block
 other Reversed Tarot Cards from spawning, additionally upright (e.g.) Fool
 blocks a reversed Fool and vice versa (and so on), unless Showman is active. 
 
+Additionally, Reversed Tarot Cards do not begin to appear until Ante 3.
+
 ----
 
 0\. Fool 
@@ -196,7 +198,7 @@ Upright - Secrecy, Obsession, Addiction
 
 Reversed - Detachment, Independence, Freedom
 
-Effect - When at $0, generate a rare joker (must have room).
+Effect - When at $0 and 0 jokers, generate two negative rare jokers.
 
 ----
 
