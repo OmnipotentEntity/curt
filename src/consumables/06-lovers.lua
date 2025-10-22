@@ -42,8 +42,8 @@ curt_Consumable {
           suits["Spades"] > 0 and
           suits["Clubs"] > 0 then
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          local _pool, _pool_key = get_current_pool('Tag', nil, nil)
-          local _tag = pseudorandom_element(_pool, pseudoseed(_pool_key))
+          local _pool, _pool_key = get_current_pool('Tag')
+          local _tag = pseudorandom_element(_pool, pseudoseed(_pool_key .. 'curt_rev_lovers'))
           add_tag(Tag(_tag))
           return true end }))
         curt_queue_juice_use_dissolve(card)
