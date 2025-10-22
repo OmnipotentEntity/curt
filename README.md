@@ -1,4 +1,4 @@
-##Curiously Unoriginal Reversed Tarot
+## Curiously Unoriginal Reversed Tarot
 
 Reversed Tarot Cards are a popular suggestion. Everyone gives this a whack at
 some point, so here's my try. It is a pretty reasonable idea, and captures
@@ -114,13 +114,14 @@ Effect - When purchasing a voucher, another is spawned and immediately purchased
 
 ----
 
-8\. Strength
+8\. Justice
 
-Upright - courage, overcoming self-doubt, control
+Upright - Law, Truth, Honesty, Cause and Effect
 
-Reversed - vulnerability, lack of confidence
+Reversed - Unfairness, Corruption, Karmic Retribution
 
-Effect - When cards are discarded, discarded cards are destroyed
+Effect - When a hand is played, scored cards are returned to hand after a new
+hand is drawn.
 
 ----
 
@@ -145,14 +146,13 @@ chance to destroy played card instead.
 
 ----
 
-11\. Justice
+11\. Strength
 
-Upright - Law, Truth, Honesty, Cause and Effect
+Upright - courage, overcoming self-doubt, control
 
-Reversed - Unfairness, Corruption, Karmic Retribution
+Reversed - vulnerability, lack of confidence
 
-Effect - When a hand is played, scored cards are returned to hand after a new
-hand is drawn.
+Effect - When cards are discarded, discarded cards are destroyed
 
 ----
 

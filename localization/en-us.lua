@@ -68,11 +68,12 @@ return {
           "{C:inactive}(May go over debt limit)"
         },
       },
-      c_curt_rev_strength = {
-        name = "The Reversed Strength",
+      c_curt_rev_justice = {
+        name = "The Reversed Justice",
         text = {
-          "When cards are discarded,",
-          "discarded cards are {C:attention}destroyed{}"
+          "When a poker hand is played,",
+          "scored cards are {C:attention}returned to",
+          "{C:attention}the hand{} after drawing",
         },
       },
       c_curt_rev_hermit = {
@@ -93,12 +94,11 @@ return {
           "{C:attention}destroy{} each scored card.",
         },
       },
-      c_curt_rev_justice = {
-        name = "The Reversed Justice",
+      c_curt_rev_strength = {
+        name = "The Reversed Strength",
         text = {
-          "When a poker hand is played,",
-          "scored cards are {C:attention}returned to",
-          "{C:attention}the hand{} after drawing",
+          "When cards are discarded,",
+          "discarded cards are {C:attention}destroyed{}"
         },
       },
       c_curt_rev_hanged_man = {
