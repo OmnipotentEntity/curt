@@ -116,6 +116,7 @@ curt_Consumable = SMODS.Consumable:extend {
 
 function curt_queue_juice_use_dissolve(card, from_rev_fool)
   G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.6, func = function()
+    G.GAME.last_tarot_planet = tarot_map_inverse[card.config.center.key]
     card:juice_up(0.6, 0.1)
     card:use_consumeable(G.consumeables)
     SMODS.calculate_context({using_consumeable = true, consumeable = card, area = card.from_area, from_rev_fool = from_rev_fool})
