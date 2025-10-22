@@ -9,7 +9,12 @@ curt_Consumable {
   end,
 
   calculate = function(self, card, context)
-
+    if card and card.ability and (not card.ability.extra.triggered) and
+        #G.jokers.cards == 0 then
+      card.ability.extra.triggered = true
+      ease_dollars(card.ability.extra.money) 
+      curt_queue_juice_use_dissolve(card)
+    end
   end
 }
 
