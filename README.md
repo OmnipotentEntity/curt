@@ -18,7 +18,7 @@ trigger automatically based on some sort of event, which consumes the card. They
 are otherwise normal consumables. When appearing in a Tarot pack, they can be
 taken, but only if you have room.
 
-Reversed Tarot Cards appear at 5% (or so) the rate of Upright Tarot. Upright
+Reversed Tarot Cards appear at 3% (or so) the rate of Upright Tarot. Upright
 Fools copy reversed Tarots as their upright version. If a Reversed Tarot is
 triggered it is consumed, even if it does nothing. Reversed Tarot Cards block
 other Reversed Tarot Cards from spawning, additionally upright (e.g.) Fool
