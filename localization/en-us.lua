@@ -65,7 +65,6 @@ return {
           "When purchasing a voucher,",
           "a second, random voucher",
           "is immediately purchased",
-          "{C:inactive}(May go over debt limit)"
         },
       },
       c_curt_rev_justice = {
