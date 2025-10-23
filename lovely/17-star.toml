@@ -1,0 +1,32 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Add SMODS.calculate_area hook to Madness and Ceremonial Dagger
+
+# Madness
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
+'''
+position = "before"
+payload = '''
+SMODS.calculate_context({sliced_joker = true, card = joker_to_destroy})
+'''
+match_indent = true
+
+# Ceremonial Dagger
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+sliced_card:start_dissolve({HEX("57ecab")}, nil, 1.6)
+'''
+position = "before"
+payload = '''
+SMODS.calculate_context({sliced_joker = true, card = sliced_card})
+'''
+match_indent = true

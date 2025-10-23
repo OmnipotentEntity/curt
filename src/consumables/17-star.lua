@@ -28,10 +28,14 @@ curt_Consumable {
   end,
 
   calculate = function(self, card, context)
-    if context.selling_card and context.card and
-        context.card.ability.name == card.ability.extra.target then
+    if (context.selling_card or context.sliced_joker) and context.card and
+        context.card.ability.set == 'Joker' and
+        context.card.ability.name == card.ability.extra.target and
+        G.jokers.config.card_limit - #G.jokers.cards > -1 and
+        not G.curt_rev_star_triggered then
       -- Have to specify a "roll" that would get you into the proper rarity pool
       -- The ranges are (-inf, 0.75], (0.75, 0.95], and (0.95, inf)
+      G.curt_rev_star_triggered = true
       local rarity_table = {0.5, 0.8, 0.97}
       local legendary = false
       if context.card.config.center.rarity == 4 then
@@ -49,6 +53,7 @@ curt_Consumable {
           })
         play_sound('timpani')
         curt_queue_juice_use_dissolve(card)
+        G.curt_rev_star_triggered = nil
         return true end }))
     end
   end,
