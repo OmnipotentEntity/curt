@@ -60,6 +60,21 @@ local tarot_map_inverse = {
 }
 
 function curt_rev_tarot_in_pool(name)
+  -- Don't allow Reversed Star to spawn if it has no targets, even if Showman is
+  -- active
+  if name == 'c_curt_rev_star' then
+    local targets = 0
+    for _, v in ipairs(G.jokers.cards) do
+      if not v.ability.eternal then
+        targets = targets + 1
+      end
+    end
+
+    if targets == 0 then
+      return nil
+    end
+  end
+
   if SMODS.showman() then
     return true
   end

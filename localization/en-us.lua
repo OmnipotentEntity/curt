@@ -144,8 +144,8 @@ return {
         name = "The Reversed Star",
         text = {
           "When {C:attention}#1#{} is destroyed,",
-          "create a new Joker",
-          "with the same rarity",
+          "create a new Joker with the",
+          "same rarity and edition",
           "{C:inactive}(Must have room)",
         },
       },

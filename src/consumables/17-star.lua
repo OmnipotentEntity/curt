@@ -28,7 +28,29 @@ curt_Consumable {
   end,
 
   calculate = function(self, card, context)
+    if context.selling_card and context.card and
+        context.card.ability.name == card.ability.extra.target then
+      -- Have to specify a "roll" that would get you into the proper rarity pool
+      -- The ranges are (-inf, 0.75], (0.75, 0.95], and (0.95, inf)
+      local rarity_table = {0.5, 0.8, 0.97}
+      local legendary = false
+      if context.card.config.center.rarity == 4 then
+        legendary = true
+      end
+      local rarity_roll = rarity_table[context.card.config.center.rarity]
 
+      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        SMODS.add_card({
+            set = 'Joker',
+            rarity = rarity_roll,
+            legendary = legendary,
+            edition = context.card.edition and context.card.edition.key,
+            no_edition = not context.card.edition
+          })
+        play_sound('timpani')
+        curt_queue_juice_use_dissolve(card)
+        return true end }))
+    end
   end,
 }
 
