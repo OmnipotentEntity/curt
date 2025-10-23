@@ -1,0 +1,28 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+if G.GAME.chips - G.GAME.blind.chips >= 0 or G.GAME.current_round.hands_left < 1 then
+  G.STATE = G.STATES.NEW_ROUND
+'''
+position = "at"
+payload = '''
+if G.GAME.chips - G.GAME.blind.chips >= 0  then
+  G.STATE = G.STATES.NEW_ROUND
+elseif G.GAME.current_round.hands_left < 1 then
+  local towers = SMODS.find_card('c_curt_rev_tower')
+  if #towers > 0 then
+    ease_hands_played(towers[1].ability.extra.hands)
+    ease_discard(towers[1].ability.extra.discards)
+    curt_queue_juice_use_dissolve(towers[1])
+    G.STATE = G.STATES.DRAW_TO_HAND
+  else
+    G.STATE = G.STATES.NEW_ROUND
+  end
+'''
+match_indent = true
