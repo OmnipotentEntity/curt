@@ -25,6 +25,11 @@ curt_Consumable {
       end
 
       if #cards_to_add > 0 then
+        local move_to_deck = false
+        if #G.hand == 0 then -- Standard Pack
+          move_to_deck = true
+        end
+
         for _, v in ipairs(cards_to_add) do
           G.playing_card = (G.playing_card and G.playing_card + 1) or 1
           v:add_to_deck()
@@ -33,10 +38,18 @@ curt_Consumable {
           G.hand:emplace(v)
           v:start_materialize(nil, _first_dissolve)
           _first_dissolve = true
+
+        end
+
+        curt_queue_juice_use_dissolve(card)
+
+        if move_to_deck then
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            G.FUNCS.draw_from_hand_to_deck()
+            return true end}))
         end
 
         card.ability.extra = {triggered = true}
-        curt_queue_juice_use_dissolve(card)
         playing_card_joker_effects(cards_to_add)
       end
     end
