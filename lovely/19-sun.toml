@@ -1,0 +1,47 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Remove hard-coded lucky rolls
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+if self.ability.effect == "Lucky Card" then
+    if SMODS.pseudorandom_probability(self, 'lucky_mult', 1, 5) then
+        self.lucky_trigger = true
+        ret = ret + self.ability.mult
+    end
+else
+    ret = ret + self.ability.mult
+end
+'''
+position = "at"
+payload = '''
+ret = ret + self.ability.mult
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+if self.ability.p_dollars > 0 then
+    if self.ability.effect == "Lucky Card" then 
+        if SMODS.pseudorandom_probability(self, 'lucky_money', 1, 15) then
+            self.lucky_trigger = true
+            ret = ret +  self.ability.p_dollars
+        end
+    else 
+        ret = ret + self.ability.p_dollars
+    end
+elseif self.ability.p_dollars < 0 then
+    ret = ret + self.ability.p_dollars
+end
+'''
+position = "at"
+payload = '''
+ret = ret + self.ability.p_dollars
+'''
+match_indent = true
