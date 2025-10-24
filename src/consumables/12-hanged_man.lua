@@ -9,7 +9,8 @@ curt_Consumable {
   end,
 
   calculate = function(self, card, context)
-    if context.hand_drawn then
+    if context.hand_drawn and not G.curt_rev_hanged_man_triggered then
+      G.curt_rev_hanged_man_triggered = true
       local count = 0
       for _, v in ipairs(context.hand_drawn) do
         if not v.debuff then
@@ -45,8 +46,10 @@ curt_Consumable {
       end
 
       if count > 0 then
-        ease_dollars(card.ability.extra.money * count)
-        curt_queue_juice_use_dissolve(card)
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+          ease_dollars(card.ability.extra.money * count)
+          curt_queue_juice_use_dissolve(card)
+          return true end}))
       end
     end
   end

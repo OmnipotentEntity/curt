@@ -6,7 +6,9 @@ curt_Consumable {
   calculate = function(self, card, context)
     -- This is pretty cursed.  Essentially, I nest the events so that they
     -- sequence properly
-    if context.buying_card and context.card.ability.set == "Voucher" then
+    if context.buying_card and context.card.ability.set == "Voucher" and 
+        not G.curt_rev_chariot_triggered then
+      G.curt_rev_chariot_triggered = true
       G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function() -- 1
         -- Create voucher
         local voucher_key = get_next_voucher_key(true)
@@ -25,6 +27,8 @@ curt_Consumable {
 
           -- Use the tarot
           G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function() -- 3
+            G.curt_rev_chariot_triggered = nil
+            -- Note, this does mean that multiple chariots = chain buying
             curt_queue_juice_use_dissolve(card)
 
             -- Use the voucher

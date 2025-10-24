@@ -10,16 +10,19 @@ curt_Consumable {
 
   calculate = function(self, card, context)
     if context.joker_main and
+        not G.curt_rev_heirophant and
         #context.full_hand == card.ability.extra.h_size and
         context.scoring_name == card.ability.extra.hand then
-      for _,v in ipairs(G.hand.cards) do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+      G.curt_rev_heirophant = true
+      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        for _,v in ipairs(G.hand.cards) do
           v.ability.perma_bonus = v.ability.perma_bonus or 0
           v.ability.perma_bonus = v.ability.perma_bonus + card.ability.extra.chips
           card_eval_status_text(v, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.CHIPS})
-          return true end }))
-      end
-      curt_queue_juice_use_dissolve(card)
+        end
+        G.curt_rev_heirophant = nil
+        curt_queue_juice_use_dissolve(card)
+        return true end }))
     end
   end
 }

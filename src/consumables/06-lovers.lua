@@ -4,7 +4,7 @@ curt_Consumable {
   pos = { x = 0, y = 1 },
 
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.joker_main and not G.curt_rev_lovers_triggered then
       local suits = {
         ['Hearts'] = 0,
         ['Diamonds'] = 0,
@@ -41,12 +41,14 @@ curt_Consumable {
           suits["Diamonds"] > 0 and
           suits["Spades"] > 0 and
           suits["Clubs"] > 0 then
+        G.curt_rev_lovers_triggered = true
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
           local _pool, _pool_key = get_current_pool('Tag')
           local _tag = pseudorandom_element(_pool, pseudoseed(_pool_key .. 'curt_rev_lovers'))
           add_tag(Tag(_tag))
+          curt_queue_juice_use_dissolve(card)
+          G.curt_rev_lovers_triggered = nil
           return true end }))
-        curt_queue_juice_use_dissolve(card)
       end
     end
   end

@@ -5,8 +5,9 @@ curt_Consumable {
 
   calculate = function(self, card, context)
     if context.selling_card and context.card.ability.consumeable and
+        not G.curt_rev_empress_triggered and
         not (context.card.config.center_key == 'c_curt_rev_empress') then
-      G.c_curt_rev_empress_triggered = true
+      G.curt_rev_empress_triggered = true
 
       G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
         for i = 1, 3 do
@@ -16,7 +17,7 @@ curt_Consumable {
           G.consumeables:emplace(_card)
         end
 
-        G.c_curt_rev_empress_triggered = nil
+        G.curt_rev_empress_triggered = nil
         return true end }))
 
       curt_queue_juice_use_dissolve(card)
