@@ -17,7 +17,7 @@ curt_Consumable {
 
       curt_queue_juice_use_dissolve(card)
 
-      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+      G.E_MANAGER:add_event(Event({func = function()
         G.curt_devil_triggered = nil
         return true end}))
     end

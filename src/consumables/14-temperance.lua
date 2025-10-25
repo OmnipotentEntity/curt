@@ -4,7 +4,9 @@ curt_Consumable {
   pos = { x = 2, y = 2 },
 
   calculate = function(self, card, context)
-    if context.playing_card_added and (not card.ability.extra or not card.ability.extra.triggered) then
+    if context.playing_card_added and not G.curt_rev_temperance_triggered and
+        (not card.ability.extra or not card.ability.extra.triggered) then
+      G.curt_rev_temperance_triggered = true
       local cards_to_add = {}
       for _, v in ipairs(context.cards) do
         for i = 1, 4 do
@@ -42,6 +44,9 @@ curt_Consumable {
         end
 
         curt_queue_juice_use_dissolve(card)
+          G.E_MANAGER:add_event(Event({func = function()
+            G.curt_rev_temperance_triggered = nil
+            return true end}))
 
         if move_to_deck then
           G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()

@@ -8,9 +8,9 @@ curt_Consumable {
     if context.using_consumeable and not G.curt_rev_fool_triggered 
         and not context.from_rev_fool then
       G.curt_rev_fool_triggered = true
-      for _ = 1, 2 do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          curt_queue_juice_use_dissolve(card, true)
+      curt_queue_juice_use_dissolve(card, true)
+      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        for _ = 1, 2 do
           play_sound('timpani')
           local make_spectral = pseudorandom('curt_rev_fool_spectral') < card.ability.extra.spectral_rate
           local t = { 
@@ -22,8 +22,8 @@ curt_Consumable {
           local _card = SMODS.add_card(t)
           _card:juice_up(0.3, 0.5)
           G.curt_rev_fool_triggered = nil
-          return true end }))
-      end
+        end
+        return true end }))
     end
   end
 }

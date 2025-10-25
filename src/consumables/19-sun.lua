@@ -4,12 +4,16 @@ curt_Consumable {
   pos = { x = 1, y = 3 },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play then print(context.other_card) end
     if context.individual and context.cardarea == G.play and
+        not G.curt_rev_sun_triggered and
         not context.end_of_round and context.other_card.lucky_trigger == 2 then
+      G.curt_rev_sun_triggered = true
       context.other_card.ability.extra.base_prob = context.other_card.ability.extra.base_prob * 2
       context.other_card.lucky_trigger = 1
       curt_queue_juice_use_dissolve(card)
+      G.E_MANAGER:add_event(Event({func = function()
+        G.curt_rev_sun_triggered = nil
+        return true end}))
     end
   end
 }
