@@ -1,9 +1,8 @@
 ## Curiously Unoriginal Reversed Tarot
 
-Reversed Tarot Cards are a popular suggestion. Everyone gives this a whack at
-some point, so here's my try. It is a pretty reasonable idea, and captures
-another element of the source inspiration. (Even if it against the Unwritten
-Rules.)
+Reversed Tarot Cards are a popular suggestion. It is a pretty reasonable idea,
+and captures another element of the source inspiration. (Even if it against the
+Unwritten Rules.) Everyone gives this a whack at some point, so here's my try. 
 
 Most implementations of this idea just simply list 22 new card effects,
 generally related to the original effect in some way. I'm going to attempt to
