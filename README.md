@@ -230,9 +230,9 @@ Upright - intuition, illusion, anxiety, misconceptions, insecurity
 
 Reversed - self-deception, exposing secrets, truth, composure
 
-Effect - When a playing card is destroyed, remove enhancement from each stone
-card in hand, and convert to the suit and rank of the leftmost card held in
-hand.
+Effect - When playing cards are destroyed, convert all stone cards in the full
+deck to the suit, rank, and non-stone enhancement of the leftmost destroyed
+card.
 
 ----
 
