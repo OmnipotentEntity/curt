@@ -152,10 +152,10 @@ return {
       c_curt_rev_moon = {
         name = "The Reversed Moon",
         text = {
-          "When a playing card is destroyed,",
-          "remove {C:enhancement}Enhancement{} from each {C:attention}Stone Card",
-          "in hand, and convert to the suit and",
-          "rank of the {C:attention}leftmost{} card held in hand",
+          "When playing cards are destroyed, convert",
+          "all {C:attention}Stone cards{} in the full deck to the",
+          "{C:attention}suit, rank,{} and {C:attention}non-Stone{} {C:enhanced}enhancement{}",
+          "of the leftmost destroyed card.",
         },
       },
       c_curt_rev_sun = {
