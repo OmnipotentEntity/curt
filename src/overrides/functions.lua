@@ -10,7 +10,7 @@ G.FUNCS.can_take_consumeable = function(e)
   end
 end
 
-G.FUNCS.take_card = function(e) -- only works for consumeables
+G.FUNCS.take_card = function(e) -- only works for consumeables, VERY bare bones implementation
   local c1 = e.config.ref_table
   G.E_MANAGER:add_event(Event({
     trigger = 'after',
@@ -28,6 +28,8 @@ G.FUNCS.take_card = function(e) -- only works for consumeables
       if G.GAME.pack_choices <= 0 then
         G.FUNCS.end_consumeable(nil, delay_fac)
       end
+
+      play_sound('card1')
       return true
     end
   }))
