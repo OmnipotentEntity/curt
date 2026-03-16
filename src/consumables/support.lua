@@ -86,11 +86,12 @@ function curt_rev_tarot_in_pool(name)
   end
 
   -- We also can't have another reversed tarot
-  for k,_ in pairs(tarot_map_inverse) do
-    if G.GAME.used_jokers[k] then
-      return nil
-    end
-  end
+  -- But we should handle this before this point
+  -- for k,_ in pairs(tarot_map_inverse) do
+  --   if G.GAME.used_jokers[k] then
+  --     return nil
+  --   end
+  -- end
 
   return true
 end
